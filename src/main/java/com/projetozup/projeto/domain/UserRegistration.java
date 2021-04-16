@@ -23,13 +23,13 @@ private static final long serialVersionUID = 1L;
 		  
 	  }
 
-	public UserRegistration(Integer id, String nome, String email, String dataNascimento, String cPF) {
+	public UserRegistration(Integer id, String nome, String email, String dataNascimento, String CPF) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.dataNascimento = dataNascimento;
-		CPF = cPF;
+		this.CPF = CPF;
 	}
 	
 
