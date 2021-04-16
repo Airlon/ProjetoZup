@@ -2,10 +2,19 @@ package com.projetozup.projeto.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class UserRegistration implements Serializable {
-	  
-	private static final long serialVersionUID = 1L;
-	private String nome;
+private static final long serialVersionUID = 1L;
+
+      @Id
+      @GeneratedValue(strategy=GenerationType.IDENTITY)
+      private Integer id;
+	  private String nome;
 	  private String email;
 	  private String dataNascimento;
 	  private String CPF;
@@ -14,12 +23,22 @@ public class UserRegistration implements Serializable {
 		  
 	  }
 
-	public UserRegistration(String nome, String email, String dataNascimento, String cPF) {
+	public UserRegistration(Integer id, String nome, String email, String dataNascimento, String cPF) {
 		super();
+		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.dataNascimento = dataNascimento;
 		CPF = cPF;
+	}
+	
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -53,13 +72,13 @@ public class UserRegistration implements Serializable {
 	public void setCPF(String cPF) {
 		CPF = cPF;
 	}
+	
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((CPF == null) ? 0 : CPF.hashCode());
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -72,20 +91,14 @@ public class UserRegistration implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		UserRegistration other = (UserRegistration) obj;
-		if (CPF == null) {
-			if (other.CPF != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!CPF.equals(other.CPF))
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}
-	  
 	
-	  
-	}
+	
 
+}
