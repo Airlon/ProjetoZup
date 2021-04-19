@@ -1,13 +1,16 @@
 package com.projetozup.projeto.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
-@Entity
+@Entity(name = "USER_REGISTRATION")
 public class UserRegistration implements Serializable {
 private static final long serialVersionUID = 1L;
 
@@ -18,6 +21,9 @@ private static final long serialVersionUID = 1L;
 	  private String email;
 	  private String dataNascimento;
 	  private String CPF;
+	  
+	  @ManyToMany(mappedBy="user")
+	  private List<RegistrationAddress> address = new ArrayList<>();
 	  
 	  public UserRegistration() {
 		  
@@ -30,6 +36,7 @@ private static final long serialVersionUID = 1L;
 		this.email = email;
 		this.dataNascimento = dataNascimento;
 		this.CPF = CPF;
+	
 	}
 	
 
@@ -74,6 +81,15 @@ private static final long serialVersionUID = 1L;
 	}
 	
 
+	public List<RegistrationAddress> getAddress() {
+		return address;
+	}
+
+	public void setAddress(List<RegistrationAddress> address) {
+		this.address = address;
+	}
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -98,7 +114,6 @@ private static final long serialVersionUID = 1L;
 			return false;
 		return true;
 	}
-	
 	
 
 }
