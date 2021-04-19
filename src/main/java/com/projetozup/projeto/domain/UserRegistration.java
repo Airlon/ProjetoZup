@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity(name = "USER_REGISTRATION")
 public class UserRegistration implements Serializable {
 private static final long serialVersionUID = 1L;
@@ -22,6 +24,7 @@ private static final long serialVersionUID = 1L;
 	  private String dataNascimento;
 	  private String CPF;
 	  
+	  //@JsonManagedReference
 	  @ManyToMany(mappedBy="user")
 	  private List<RegistrationAddress> address = new ArrayList<>();
 	  
