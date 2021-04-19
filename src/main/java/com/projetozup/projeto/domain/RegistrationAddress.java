@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -31,6 +32,7 @@ public class RegistrationAddress implements Serializable {
 	
 	@JsonIgnore
 	@ManyToMany
+	//@JsonBackReference
 	@JoinTable(name = "USER_ADDRESS", 
 			 joinColumns = @JoinColumn(name = "address_id"), 
 			 inverseJoinColumns = @JoinColumn(name = "user_id")

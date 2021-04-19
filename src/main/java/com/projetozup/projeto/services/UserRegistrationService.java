@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.projetozup.projeto.domain.UserRegistration;
 import com.projetozup.projeto.repositories.UserRegistrationRepository;
+import com.projetozup.projeto.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class UserRegistrationService {
@@ -16,7 +17,8 @@ public class UserRegistrationService {
 	
 	public UserRegistration find(Integer id) { 
 		 Optional<UserRegistration> obj = repo.findById(id); 
-		return obj.orElse(null); 
+		 return obj.orElseThrow(() -> new ObjectNotFoundException( 
+				 "Objeto não encontrado! Id: " + id + ", Tipo: " + UserRegistration.class.getName())); 
 		
 	}
 
